@@ -1,0 +1,27 @@
+# Gambas Project File 3.0
+Title=RamDive
+Startup=FMain
+Version=2.0.4
+Component=gb.image
+Component=gb.gui
+Component=gb.form
+Component=gb.desktop
+Description="Pequeña aplicación para crear y montar unidades con memoria ram.\nhttps://thenerdyapprentice.blogspot.com/"
+Authors="The Nerdy Apprentice"
+TabSize=2
+Language=es_AR
+Maintainer=ozymandias
+Vendor=TheNerdyApprentice
+VendorPrefix=TNA
+Address=marianocattani@gmail.com
+Url=https://thenerdyapprentice.blogspot.com/
+License=General Public License
+PackageName=ramdrive2-2.0.4
+CreateEachDirectory=1
+Packager=1
+Systems=ubuntu
+Menus=ubuntu:"Applications/File Management"
+Categories=ubuntu:"FileManager"
+Groups=ubuntu:"admin"
+Tags=Filesystem,System
+WebSite=https://thenerdyapprentice.blogspot.com/

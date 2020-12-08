@@ -1,0 +1,111 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,87,68)
+  Text = ("//RamDrive//")
+  Icon = Picture["icon:/32/tools"]
+  Resizable = False
+  { Menu1 Menu
+    Text = ("Más")
+    Picture = Picture["icon:/32/add"]
+    { mnInfo Menu
+      Text = ("Más Información")
+      Picture = Picture["icon:/24/development"]
+    }
+    { mnAcerca Menu
+      Text = ("Acerca de") & "..."
+      Picture = Picture["icon:/24/share"]
+    }
+    { Menu2 Menu
+      Text = ("Salir")
+      Picture = Picture["icon:/24/quit"]
+    }
+  }
+  { MWizard Wizard
+    MoveScaled(1,1,85,63)
+    Count = 2
+    ShowIndex = True
+    Index = 0
+    Text = ("Paso #1 Crear Punto de Montaje")
+    { GridViewFreeMem GridView
+      MoveScaled(1,1,83,9)
+      ToolTip = ("Memoria Libre")
+      ScrollBar = Scroll.None
+    }
+    { DirChP DirChooser
+      MoveScaled(1,11,83,41)
+      ToolTip = ("Elegir punto de montaje")
+    }
+    Index = 1
+    Text = ("Paso #2 Tamaño y Creación de la Unidad Ram")
+    { Label1 Label
+      MoveScaled(1,1,18,2)
+      Font = Font["Underline"]
+      Text = ("Punto de Montaje:")
+    }
+    { TxDir TextBox
+      MoveScaled(1,5,83,3)
+      ToolTip = ("Punto de Montaje")
+      ReadOnly = True
+    }
+    { Label2 Label
+      MoveScaled(1,10,81,3)
+      Font = Font["Underline"]
+      Text = ("2.1 Tamaño de la unidad Ram:")
+    }
+    { SbTam Slider
+      MoveScaled(1,14,83,4)
+      ToolTip = ("Elegir tamaño de la unidad")
+      MinValue = 1
+      MaxValue = 4000
+      Step = 100
+      Value = 100
+    }
+    { txTam TextBox
+      MoveScaled(1,19,28,4)
+      ToolTip = ("Tamaño de la Unidad Ram")
+      Text = ("Tamaño: 100 MB")
+      ReadOnly = True
+    }
+    { txPass TextBox
+      MoveScaled(1,30,30,4)
+      ToolTip = ("Password del Sudo")
+      Password = True
+    }
+    { Label3 Label
+      MoveScaled(1,25,81,3)
+      Font = Font["Underline"]
+      Text = ("2.2 Ingrese contraseña Root:")
+    }
+    { btCrear Button
+      MoveScaled(1,37,28,5)
+      ToolTip = ("Crear Unidad Ram")
+      Text = ("Crear RamDrive")
+      Picture = Picture["icon:/32/start"]
+    }
+    { btDesmontar Button
+      MoveScaled(1,45,28,5)
+      Enabled = False
+      ToolTip = ("Desmontar Unidad Ram")
+      Text = ("Desmontar RamDrive")
+      Picture = Picture["icon:/32/stop"]
+    }
+    { txDF TextArea
+      MoveScaled(33,19,50,31)
+      ToolTip = ("Ssitemas de archivos montados")
+      ReadOnly = True
+    }
+    { Separator1 Separator
+      MoveScaled(1,51,82,1)
+    }
+    Index = 0
+  }
+  { TimerMemory #Timer
+    #MoveScaled(76,1)
+    Delay = 250
+  }
+  { MV MessageView
+    MoveScaled(22,21,63,6)
+    Animated = True
+  }
+}

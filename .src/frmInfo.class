@@ -1,0 +1,22 @@
+' Gambas class file
+
+
+Public Sub Form_Open()
+
+  txDF.Text = Sistema.DFH()
+  
+End
+
+Public Sub Form_KeyPress()
+
+  If Key.Code = Key.Esc Then Me.Close
+  
+
+End
+
+Public Sub btCerrar_Click()
+
+  Me.Close
+  
+
+End

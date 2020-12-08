@@ -1,0 +1,7 @@
+* Mon Dec 07 2020 ozymandias <marianocattani@gmail.com> 2.0.4
+- Cambio de apariencia de las tabs por el wizard
+- Mejora de código
+- Abre carpeta montada tras creación de unidad Ram
+- Agregada información de los sistemas de archivos montados (df -h)
+- Cambiado el ingreso de la contraseña.
+

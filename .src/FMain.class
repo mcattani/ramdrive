@@ -1,0 +1,212 @@
+' Gambas class file
+
+Public DirP As String
+Public Pass As String
+
+Public Sub Form_Open()
+
+TimerMemory.Start ' Encedemos el timer
+mv.Open("Debe hacer doble click sobre la carpeta para elegir")
+
+End
+
+Public Sub SetUpGrid()
+' Rellenamos el grid con los datos de la memoria disponible
+
+  Dim sMem, sTemp, sHold As String
+  Dim sLine As New String[]
+  Dim siRow, siCol As Short
+
+  With GridViewFreeMem
+    .Columns.count = 7
+    .Rows.Count = 3
+  End With
+
+  sMem = Sistema.MemLibre()
+
+  For Each sTemp In Split(sMem, "\n")
+    Repeat
+      sHold = sTemp
+      sTemp = Trim(Replace(sTemp, "  ", " "))
+    Until sHold = sTemp
+    sLine.Add(sTemp & "\n")
+  Next
+
+  For siRow = 0 To 2
+    If siRow = 0 Then Inc siCol
+    For Each sTemp In Split(sLine[siRow], " ")
+      GridViewFreeMem[siRow, siCol].text = Trim(sTemp)
+      Inc siCol
+    Next
+    siCol = 0
+  Next
+
+  For siCol = 1 To 6
+    sTemp = GridViewFreeMem[0, siCol].text
+    sTemp = UCase(Left(sTemp, 1)) & Mid(sTemp, 2)
+    GridViewFreeMem[0, siCol].text = sTemp
+  Next
+
+  GridViewFreeMem.Columns.Width = -1
+
+End
+
+Public Sub TimerMemory_Timer()
+' Refresca el Grid con los datos de la memoria y la información sobre los sitemas de archivos montados (esta última no tiene una verdadera razón para refrescarse todo el tiempo,)
+
+  SetUpGrid
+  txDF.Text = Sistema.DFH()
+
+End
+
+
+Public Sub Form_KeyPress()
+
+  If Key.code = Key.Esc Then Quit
+
+End
+
+Public Sub DirChP_Activate()
+
+  Dim Chose As Integer
+
+  DirP = dirChp.SelectedPath
+  Chose = Message.Question(("Se ha seleccionado: ") & DirP & (" es esto correcto?"), ("Si"), ("No")) ' Si elige Si devuelve valor = 1, No = 2
+
+  Select Case Chose
+    Case 1
+      DirP = dirChp.SelectedPath
+      TxDir.Text = DirP
+      
+    Case 2
+      Return
+  End Select
+
+  Print DirP
+
+End
+
+
+Public Sub SbTam_Change()
+' Para transformar los valores de MB a GB
+
+  Dim Tam As Single
+  Dim sTam As String
+
+  Tam = sbTam.Value
+
+  If tam > 999 Then
+    sTam = Format(Tam / 1000, "0.##")
+    txTam.Text = ("Tamaño: ") & Str(tam / 1000) & " GB"
+  Else
+    If Tam < 999 Then
+      sTam = Format(Tam, "0.##")
+      txTam.Text = ("Tamaño: ") & Str(tam) & " MB"
+
+    Endif
+
+Print sbTam.Value
+
+  Endif
+
+
+End
+
+Public Sub MWizard_Cancel()
+
+  Dim Chose As Integer
+  Chose = Message.Question(("¿Desea salir ahora?"), ("Si"), ("No")) ' Si elige Si devuelve valor = 1, No = 2
+  
+  Select Case Chose
+    Case 1
+      Quit      
+      
+    Case 2
+      Return
+  End Select
+
+End
+
+Public Sub mnAcerca_Click()
+
+  frmAbout.Show
+  
+
+End
+
+Public Sub mnInfo_Click()
+
+  frmInfo.Show()
+
+End
+
+Public Sub btCrear_Click()
+' Chequeamos primero que se haya elegido una ruta y esté el password para sudo.
+
+  If TxDir.Text = "" Then
+    Message.Warning("Debe elegirse un punto de montaje!")
+    Return
+  Endif
+  
+  If txPass.Text = "" Then
+    Message.Warning("Debe introducir la contraseña para Sudo!")
+    Return
+  Else
+    Pass = txPass.Text    
+ 
+  Endif
+  
+ ' Creamos la ramdrive y abrimos la carpeta de salida
+ Sistema.CRamDrive(TxDir.Text, sbTam.Value, txPass.Text)
+ btDesmontar.Enabled = True
+ Message.Info("Unidad Ram Creada! " & TxDir.Text)
+ Sistema.AbrirCarpeta(TxDir.Text)
+ 
+    
+End
+
+Public Sub btDesmontar_Click()
+' Chequeamos primero que se haya elegido una ruta y esté el password para sudo.
+
+  If TxDir.Text = "" Then
+    Message.Warning("Debe elegirse un punto de montaje para desmontar!")
+    Return
+  Endif
+  
+  If txPass.Text = "" Then
+    Message.Warning("Debe introducir la contraseña para Sudo!")
+    Return
+  Else
+    Pass = txPass.Text    
+ 
+  Endif
+
+  Sistema.URamDrive(TxDir.Text, txPass.Text)
+  btDesmontar.Enabled = False
+  Message.Info("Unidad Desmontada! " & TxDir.Text)
+   
+End
+
+Public Sub Menu2_Click()
+
+  Quit
+  
+
+End
+
+Public Sub MWizard_Close()
+' Evento para cuando se hace click en OK en la última página del wizard
+
+  Dim Chose As Integer
+  Chose = Message.Question(("¿Desea salir ahora?"), ("Si"), ("No")) ' Si elige Si devuelve valor = 1, No = 2
+  
+  Select Case Chose
+    Case 1
+      Quit      
+      
+    Case 2
+      Return
+  End Select
+
+
+End

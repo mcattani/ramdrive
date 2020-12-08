@@ -1,0 +1,61 @@
+' Gambas module file
+
+' Módulo para correr los comandos del sistema.
+
+Public Sub MemLibre() As String
+
+  Dim Comando As String, Salida As String
+
+  Comando = "free -m"
+
+  Shell (Comando) To Salida
+
+  Return Salida
+
+End
+
+Public Function CRamDrive(Path As String, Size As Float, Password As String) ' Función para crear la unidad
+' ej: mount -t tmpfs -o size=512m tmpfs /mnt/ramdisk
+  Dim Comando As String
+
+  Comando = " | sudo -S mount -t tmpfs -o size=" & Size & "m" & " tmpfs " & Path
+  Try Shell ("echo " & Password & comando)
+  If Error
+    Message(Error.Code & Error.Text)
+  Endif
+  
+  
+End
+
+Public Function AbrirCarpeta(Path As String)
+'Comando para abrir carpeta en Linux (no estoy seguro que funciona en todas las distros!)
+
+Try Shell ("xdg-open " & Path)
+ If Error
+    Message(Error.Code & Error.Text)
+  Endif
+  
+End
+
+Public Sub DFH() As String ' Reporte del uso del sistema de archivos
+    Dim Salida As String
+    
+  Shell ("df -h " & "| grep -i " & "tmpfs") To Salida
+    
+  Return Salida
+    
+End
+
+
+Public Function URamDrive(Path As String, Password As String) ' Para desmontar la unidad
+  Dim Comando As String
+  
+  Comando = " | sudo -S umount " & Path
+  Try Shell ("echo " & Password & Comando)
+  If Error Then
+    Message(Error.code & Error.Text)
+  Endif
+   
+  
+End
+
