@@ -20,5 +20,7 @@ El programa usa por defecto **tmps**.
 
 Esta APP permite crear este tipo de unidades; asignándoles tamaño y montándolas.
 
-Si te gustó/interesa esta app visitá mi blog!.
-https://thenerdyapprentice.blogspot.com/
+Par más información visitá mi blog:
+https://thenerdyapprentice.blogspot.com/2020/12/ramdrive.html
+
+Saludos!
