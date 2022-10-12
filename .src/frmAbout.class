@@ -2,28 +2,25 @@
 
 Public Sub Form_KeyPress()
 
-     If Key.code = Key.esc Then Me.Close
+  If Key.code = Key.esc Then Me.Close
 
 End
 
 Public Sub btCerrar_Click()
 
-     Me.Close
+  Me.Close
 
 End
 
 Public Sub URL_Click()
-' Abre link, tiene que estar gb.desktop habilitado
+  ' Abre link, tiene que estar gb.desktop habilitado
 
-     Desktop.Open(URL.Link)
+  Desktop.Open(URL.Link)
 
 End
 
 Public Sub Form_Activate()
 
-     Me.Center
+  Me.Center
 
 End
-
-
-

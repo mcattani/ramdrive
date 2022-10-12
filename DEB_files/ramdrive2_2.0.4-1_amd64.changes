@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Wed, 12 Oct 2022 12:00:00 +0000
+Source: ramdrive2
+Binary: ramdrive2
+Architecture: source all
+Version: 2.0.4-1
+Distribution: unstable
+Urgency: low
+Maintainer: ozymandias <marianocattani@gmail.com>
+Changed-By: ozymandias <marianocattani@gmail.com>
+Description:
+ ramdrive2  - Pequeña aplicación para crear y montar unidades con memoria ra...
+Changes:
+ ramdrive2 (2.0.4-1) unstable; urgency=low
+ .
+   * Agregado búsqueda de nueva versión (preparación para próximo lanzamiento)
+Checksums-Sha1:
+ e623ba3128f75bf67fc81bc4c6fc15cada00ce31 995 ramdrive2_2.0.4-1.dsc
+ 8d04275f478b0884926be6efda6511dcbaaad628 1507 ramdrive2_2.0.4-1.diff.gz
+ d67e06e4a79f6fdd4ab2d34b88f6c21f53e08adc 86108 ramdrive2_2.0.4-1_all.deb
+ a6557e284ce4da5c5a69800b1f7c2a4b2d9dd3d1 1050 ramdrive2_2.0.4-1_amd64.buildinfo
+Checksums-Sha256:
+ dd9090b3f3ab764fe196f01b2ebd880853cd96b4cecd754e71f7a859b61d965c 995 ramdrive2_2.0.4-1.dsc
+ cd0ced41a305cb617cccdfc3618372315543fbc3c1008218afbf1719e4811d23 1507 ramdrive2_2.0.4-1.diff.gz
+ eab3a3428490a82cd1928c62f0e09270d90883a3df9e8c44e29f157dc1a0e40b 86108 ramdrive2_2.0.4-1_all.deb
+ bbfe629e8053a5f51d886b4b9a11a00e4bc9067c326d3db36d966c3a49e580cf 1050 ramdrive2_2.0.4-1_amd64.buildinfo
+Files:
+ 86e130b52893d44cae31b8d602127ee0 995 contrib/utils optional ramdrive2_2.0.4-1.dsc
+ 99c35ea014b8ad438efe1939295d9d26 1507 contrib/utils optional ramdrive2_2.0.4-1.diff.gz
+ e84fc95395cb58b8244d24bb2dc06aa3 86108 contrib/utils optional ramdrive2_2.0.4-1_all.deb
+ 9b4bfab043c77bfec31f1ac6b9cfcf51 1050 contrib/utils optional ramdrive2_2.0.4-1_amd64.buildinfo
