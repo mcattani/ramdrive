@@ -1,33 +1,31 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,125,40)
-  ToolTip = ("Acerca de") & "..."
+  MoveScaled(0,0,124,40)
   Text = ("Acerca de") & "..."
-  Icon = Picture["icon:/48/security"]
+  Icon = Picture["icon:/24/administrator"]
   Resizable = False
-  SkipTaskbar = True
   { PictureBox1 PictureBox
-    MoveScaled(-3,1,55,38)
-    Picture = Picture["Logo_Oficial.png"]
+    MoveScaled(-4,1,55,38)
+    Picture = Picture.Load("Logo_Oficial.png")
     Stretch = True
   }
   { txtAbout TextArea
-    MoveScaled(48,1,76,27)
+    MoveScaled(47,1,76,27)
     ToolTip = ("Acerca de mí") & "..."
     Text = ("Hobbista y nerd, me gusta experimentar y aprender haciendo aplicaciones que\nme hagan las cosas más fáciles. \nTengo un blog donde subo mis proyectos (incluidas las fuentes de este programa) e información adicional:\n\nhttps://thenerdyapprentice.blogspot.com/\n\nSi encontraste útil este programa: por favor visita el blog!, dejá un comentario y difundí!\n\nEste programa es de libre distribución.\n\nSaludos! ")
     ReadOnly = True
     Wrap = True
   }
   { URL URLLabel
-    MoveScaled(48,29,76,4)
+    MoveScaled(48,29,74,4)
     Font = Font["+5"]
     ToolTip = ("Click para acceder al blog")
     Text = ("https://thenerdyapprentice.blogspot.com/")
     Link = "https://thenerdyapprentice.blogspot.com/"
   }
   { btCerrar Button
-    MoveScaled(102,34,22,5)
+    MoveScaled(107,33,15,5)
     Text = ("Cerrar")
     Picture = Picture["icon:/24/close"]
   }

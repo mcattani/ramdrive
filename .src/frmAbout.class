@@ -1,8 +1,8 @@
 ' Gambas class file
 
-Public Sub Form_KeyPress()
+Public Sub Form_Open()
 
-  If Key.code = Key.esc Then Me.Close
+  txtabout.pos = 0
 
 End
 
@@ -19,8 +19,8 @@ Public Sub URL_Click()
 
 End
 
-Public Sub Form_Activate()
+Public Sub Form_KeyPress()
 
-  Me.Center
+  If Key.code = Key.esc Then Me.Close
 
 End

@@ -1,10 +1,11 @@
-* Wed Oct 12 2022 ozymandias <marianocattani@gmail.com> 2.0.4
-- Agregado búsqueda de nueva versión (preparación para próximo lanzamiento)
+* Mon Oct 24 2022 The Nerdy Apprentice <marianocattani@gmail.com> 3.0.6
+- Agregado buscador de nuevas versiones
 
-* Mon Dec 07 2020 ozymandias <marianocattani@gmail.com> 2.0.4
-- Cambio de apariencia de las tabs por el wizard
-- Mejora de código
-- Abre carpeta montada tras creación de unidad Ram
-- Agregada información de los sistemas de archivos montados (df -h)
-- Cambiado el ingreso de la contraseña.
+* Sat Oct 15 2022 The Nerdy Apprentice <marianocattani@gmail.com> 3.0.5
+- Corregido algunos controles que no se mostraban bien en Gtk3
 
+* Thu Oct 13 2022 The Nerdy Apprentice <marianocattani@gmail.com> 3.0.4
+- Lanzamiento de la versión 3x
+- Re hecha la interfaz gráfica para ser más concisa
+- Agregada función para mostrar de manera más clara la cantidad de memoria RAM libre
+- Prueba instalador

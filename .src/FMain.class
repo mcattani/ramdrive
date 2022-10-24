@@ -1,24 +1,28 @@
 ' Gambas class file
 
-Public DirP As String
-Public Pass As String
+Public DirPuntoMontaje As String
 
 Public Sub Form_Open()
 
   Dim vChk As String
 
-  TimerMemory.Start ' Encedemos el timer
-  mv.Open("Debe hacer doble click sobre la carpeta para elegir")
+  FMain.Text = Application.Title & " v" & Application.Version
 
+  Settings.Read(Me) ' Leemos la configuración guardada sobre el formulario
+
+  'Seteamos el valor mínimo y máximo del slider
+  SbTam.MinValue = 5
+  SbTam.MaxValue = Sistema.MemoriaLibre() - 50
+
+  'Chequeamos si hay una versión nueva
   vChk = GitVersion("https://raw.githubusercontent.com/mcattani/ramdrive/master/.project")
-
   If Application.Version <> vChk Then
     Message.Info(("Nueva versión enconrada!") & ": " & vChk)
   Endif
 
 End
 
-Public Function GitVersion(raw As String) As String
+Public Function GitVersion(raw As String) As String ' Función que chequea en GIT si hay una versión nueva
 
   Dim s As String
   Dim stx As String[]
@@ -47,8 +51,19 @@ Public Function GitVersion(raw As String) As String
 
 End
 
+Public Sub Form_KeyPress()
+
+  If Key.code = Key.Esc Then
+    If Message.Question("¿Seguro desea salir de la aplicación?", "Si", "No") = 1 Then
+      Settings.write(Me)
+      Quit
+    Endif
+  Endif
+
+End
+
 Public Sub SetUpGrid()
-  ' Rellenamos el grid con los datos de la memoria disponible
+  'Rellenamos el grid con los datos de la memoria disponible
 
   Dim sMem, sTemp, sHold As String
   Dim sLine As New String[]
@@ -59,7 +74,7 @@ Public Sub SetUpGrid()
     .Rows.Count = 3
   End With
 
-  sMem = Sistema.MemLibre()
+  sMem = Sistema.MemSistema()
 
   For Each sTemp In Split(sMem, "\n")
     Repeat
@@ -89,54 +104,47 @@ Public Sub SetUpGrid()
 End
 
 Public Sub TimerMemory_Timer()
-  ' Refresca el Grid con los datos de la memoria y la información sobre los sitemas de archivos montados (esta última no tiene una verdadera razón para refrescarse todo el tiempo,)
 
-  SetUpGrid
-  txDF.Text = Sistema.DFH()
-
-End
-
-Public Sub Form_KeyPress()
-
-  If Key.code = Key.Esc Then Quit
+  SetUpGrid ' Refresca el GridView con los datos de la memoria
+  txMemLibre.Text = Sistema.MemoriaLibre() & " mb" 'Refresca la cantidad de memoria libre
+  txDF.Text = Sistema.DFH() 'Refresca el estado del sistema de archivos
 
 End
 
-Public Sub DirChP_Activate()
+Public Sub btnMontaje_Click()
 
-  Dim Chose As Integer
+  Dialog.Title = "Elija un directorio para montar la unidad"
+  Dialog.SelectDirectory
+  DirPuntoMontaje = Dialog.Path
+  txPuntoMontaje.Text = DirPuntoMontaje
+  txPuntoMontaje.Pos = 0
 
-  DirP = dirChp.SelectedPath
-  Chose = Message.Question(("Se ha seleccionado: ") & DirP & (" es esto correcto?"), ("Si"), ("No")) ' Si elige Si devuelve valor = 1, No = 2
+End
 
-  Select Case Chose
-    Case 1
-      DirP = dirChp.SelectedPath
-      TxDir.Text = DirP
+Public Sub Form_Close()
+  ' Guardmos los valores deltamaño de la ventana
 
-    Case 2
-      Return
-  End Select
-
-  Print DirP
+  Settings.Write(Me)
+  Quit
 
 End
 
 Public Sub SbTam_Change()
+
   ' Para transformar los valores de MB a GB
 
-  Dim Tam As Single
+  Dim Tam As Float
   Dim sTam As String
 
   Tam = sbTam.Value
 
   If tam > 999 Then
-    sTam = Format(Tam / 1000, "0.##")
-    txTam.Text = ("Tamaño: ") & Str(tam / 1000) & " GB"
+    sTam = Format(Tam / 1000, "#")
+    txTam.Text = ("Tamaño elegido: ") & Str(tam / 1000) & " GB"
   Else
     If Tam < 999 Then
-      sTam = Format(Tam, "0.##")
-      txTam.Text = ("Tamaño: ") & Str(tam) & " MB"
+      sTam = Format(Tam, "#")
+      txTam.Text = ("Tamaño elegido: ") & Str(tam) & " MB"
 
     Endif
 
@@ -146,19 +154,56 @@ Public Sub SbTam_Change()
 
 End
 
-Public Sub MWizard_Cancel()
+Public Sub Form_Resize()
 
-  Dim Chose As Integer
+  SbTam.Width = FMain.Width - 10
 
-  Chose = Message.Question(("¿Desea salir ahora?"), ("Si"), ("No")) ' Si elige Si devuelve valor = 1, No = 2
+End
 
-  Select Case Chose
-    Case 1
-      Quit
+Public Sub btCrear_Click()
 
-    Case 2
-      Return
-  End Select
+  'Chequeamos que el usuario haya seleccionado una ruta para montar el la unidad
+  'y que haya ingresado un password
+
+  If txPuntoMontaje.Text = "" Then
+    Message.Warning("Debe seleccionar un directorio para montar la unidad")
+    Return
+  Endif
+
+  If txPass.Text = "" Then
+    Message.Warning("Debe ingresar el password Root/Sudo para crear la unidad")
+    Return
+  Endif
+
+  Sistema.CRamDrive(txPuntoMontaje.Text, SbTam.Value, txPass.Text)
+  Message.Info("¡Unidad Ram Creada!")
+  sistema.AbrirCarpeta(txPuntoMontaje.Text)
+
+End
+
+Public Sub btDesmontar_Click()
+
+  'Chequeamos que el usuario haya seleccionado una ruta para montar el la unidad
+  'y que haya ingresado un password
+
+  If txPuntoMontaje.Text = "" Then
+    Message.Warning("Debe seleccionar un directorio para montar la unidad")
+    Return
+  Endif
+
+  If txPass.Text = "" Then
+    Message.Warning("Debe ingresar el password Root/Sudo para crear la unidad")
+    Return
+  Endif
+
+  sistema.URamDrive(txPuntoMontaje.Text, txPass.Text)
+  Message.Info("¡Unidad Ram Desmontada!")
+
+End
+
+Public Sub mnInfo_Click()
+
+  frmInfo.Show
 
 End
 
@@ -168,77 +213,9 @@ Public Sub mnAcerca_Click()
 
 End
 
-Public Sub mnInfo_Click()
+Public Sub Menu3_Click()
 
-  frmInfo.Show()
-
-End
-
-Public Sub btCrear_Click()
-  ' Chequeamos primero que se haya elegido una ruta y esté el password para sudo.
-
-  If TxDir.Text = "" Then
-    Message.Warning("Debe elegirse un punto de montaje!")
-    Return
-  Endif
-
-  If txPass.Text = "" Then
-    Message.Warning("Debe introducir la contraseña para Sudo!")
-    Return
-  Else
-    Pass = txPass.Text
-
-  Endif
-
-  ' Creamos la ramdrive y abrimos la carpeta de salida
-  Sistema.CRamDrive(TxDir.Text, sbTam.Value, txPass.Text)
-  btDesmontar.Enabled = True
-  Message.Info("Unidad Ram Creada! " & TxDir.Text)
-  Sistema.AbrirCarpeta(TxDir.Text)
-
-End
-
-Public Sub btDesmontar_Click()
-  ' Chequeamos primero que se haya elegido una ruta y esté el password para sudo.
-
-  If TxDir.Text = "" Then
-    Message.Warning("Debe elegirse un punto de montaje para desmontar!")
-    Return
-  Endif
-
-  If txPass.Text = "" Then
-    Message.Warning("Debe introducir la contraseña para Sudo!")
-    Return
-  Else
-    Pass = txPass.Text
-
-  Endif
-
-  Sistema.URamDrive(TxDir.Text, txPass.Text)
-  btDesmontar.Enabled = False
-  Message.Info("Unidad Desmontada! " & TxDir.Text)
-
-End
-
-Public Sub Menu2_Click()
-
+  Settings.Write(Me)
   Quit
-
-End
-
-Public Sub MWizard_Close()
-  ' Evento para cuando se hace click en OK en la última página del wizard
-
-  Dim Chose As Integer
-
-  Chose = Message.Question(("¿Desea salir ahora?"), ("Si"), ("No")) ' Si elige Si devuelve valor = 1, No = 2
-
-  Select Case Chose
-    Case 1
-      Quit
-
-    Case 2
-      Return
-  End Select
 
 End

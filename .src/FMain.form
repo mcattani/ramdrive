@@ -1,111 +1,148 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,87,68)
-  Text = ("//RamDrive//")
-  Icon = Picture["icon:/32/tools"]
-  Resizable = False
+  MoveScaled(0,0,71,89)
+  Expand = True
+  Icon = Picture["icon.png"]
+  Arrangement = Arrange.Vertical
   { Menu1 Menu
-    Text = ("Más")
-    Picture = Picture["icon:/32/add"]
+    Text = ("Más Información")
     { mnInfo Menu
-      Text = ("Más Información")
-      Picture = Picture["icon:/24/development"]
+      Text = ("Persistencia")
+      Picture = Picture["icon:/24/warning"]
     }
     { mnAcerca Menu
       Text = ("Acerca de") & "..."
-      Picture = Picture["icon:/24/share"]
+      Picture = Picture["icon:/24/info"]
     }
     { Menu2 Menu
+    }
+    { Menu3 Menu
       Text = ("Salir")
-      Picture = Picture["icon:/24/quit"]
+      Picture = Picture["icon:/24/close"]
     }
   }
-  { MWizard Wizard
-    MoveScaled(1,1,85,63)
-    Count = 2
-    ShowIndex = True
-    Index = 0
-    Text = ("Paso #1 Crear Punto de Montaje")
-    { GridViewFreeMem GridView
-      MoveScaled(1,1,83,9)
-      ToolTip = ("Memoria Libre")
-      ScrollBar = Scroll.None
+  { Label3 Label
+    MoveScaled(0,1,29,4)
+    Padding = 8
+    Border = Border.Plain
+    Text = ("Memoria disponible en el sistema:")
+  }
+  { GridViewFreeMem GridView
+    MoveScaled(0,5,70,9)
+    ToolTip = ("Memoria Libre")
+    Padding = 0
+    ScrollBar = Scroll.None
+  }
+  { Label2 Label
+    MoveScaled(0,15,22,4)
+    Font = Font["Bold,+1"]
+    Padding = 8
+    Border = Border.Plain
+    Text = ("1. Punto de montaje:")
+  }
+  { btnMontaje Button
+    MoveScaled(1,19,26,5)
+    ToolTip = ("Elige el punto de montaje donde se creará la unidad ram")
+    Text = ("Elegir punto de montaje")
+    Picture = Picture["icon:/22/folder-blue"]
+  }
+  { txPuntoMontaje TextBox
+    MoveScaled(1,24,66,4)
+    ReadOnly = True
+  }
+  { Label1 Label
+    MoveScaled(0,28,24,4)
+    Font = Font["Bold,+1"]
+    Padding = 8
+    Border = Border.Plain
+    Text = ("2. Tamaño de la unidad:")
+  }
+  { Panel1 Panel
+    MoveScaled(0,32,70,6)
+    { Label4 Label
+      MoveScaled(1,1,15,4)
+      Padding = 8
+      Alignment = Align.Center
+      Border = Border.Plain
+      Text = ("Memoria Libre:")
     }
-    { DirChP DirChooser
-      MoveScaled(1,11,83,41)
-      ToolTip = ("Elegir punto de montaje")
-    }
-    Index = 1
-    Text = ("Paso #2 Tamaño y Creación de la Unidad Ram")
-    { Label1 Label
-      MoveScaled(1,1,18,2)
-      Font = Font["Underline"]
-      Text = ("Punto de Montaje:")
-    }
-    { TxDir TextBox
-      MoveScaled(1,5,83,3)
-      ToolTip = ("Punto de Montaje")
+    { txMemLibre TextBox
+      MoveScaled(17,1,10,4)
+      Alignment = Align.Center
       ReadOnly = True
-    }
-    { Label2 Label
-      MoveScaled(1,10,81,3)
-      Font = Font["Underline"]
-      Text = ("2.1 Tamaño de la unidad Ram:")
-    }
-    { SbTam Slider
-      MoveScaled(1,14,83,4)
-      ToolTip = ("Elegir tamaño de la unidad")
-      MinValue = 1
-      MaxValue = 4000
-      Step = 100
-      Value = 100
     }
     { txTam TextBox
-      MoveScaled(1,19,28,4)
+      MoveScaled(28,1,25,4)
       ToolTip = ("Tamaño de la Unidad Ram")
-      Text = ("Tamaño: 100 MB")
+      Text = ("Tamaño elegido:")
+      Alignment = Align.Center
       ReadOnly = True
+    }
+  }
+  { Label5 Label
+    MoveScaled(1,39,33,4)
+    Padding = 8
+    Border = Border.Plain
+    Text = ("Seleccione tamaño de la unidad a crear:")
+  }
+  { Panel3 Panel
+    MoveScaled(1,43,70,5)
+    { SbTam ScrollBar
+      MoveScaled(1,1,67,3)
+    }
+  }
+  { Panel2 Panel
+    MoveScaled(1,49,70,6)
+    { Label6 Label
+      MoveScaled(0,1,20,4)
+      Padding = 8
+      Alignment = Align.Center
+      Border = Border.Plain
+      Text = ("Password Root/Sudo:")
     }
     { txPass TextBox
-      MoveScaled(1,30,30,4)
-      ToolTip = ("Password del Sudo")
+      MoveScaled(20,1,43,4)
+      ToolTip = ("Passqord Root/Sudo")
+      Alignment = Align.Center
       Password = True
     }
-    { Label3 Label
-      MoveScaled(1,25,81,3)
-      Font = Font["Underline"]
-      Text = ("2.2 Ingrese contraseña Root:")
-    }
+  }
+  { Label7 Label
+    MoveScaled(0,56,24,4)
+    Font = Font["Bold"]
+    Padding = 8
+    Border = Border.Plain
+    Text = ("3. Creación de la unidad:")
+  }
+  { Panel4 Panel
+    MoveScaled(0,60,70,7)
     { btCrear Button
-      MoveScaled(1,37,28,5)
-      ToolTip = ("Crear Unidad Ram")
-      Text = ("Crear RamDrive")
-      Picture = Picture["icon:/32/start"]
+      MoveScaled(1,1,22,5)
+      Text = ("Crear unidad RAM")
+      Picture = Picture["icon:/24/start"]
     }
     { btDesmontar Button
-      MoveScaled(1,45,28,5)
-      Enabled = False
-      ToolTip = ("Desmontar Unidad Ram")
+      MoveScaled(23,1,24,5)
+      ToolTip = ("Desmontar unidad RAM")
       Text = ("Desmontar RamDrive")
-      Picture = Picture["icon:/32/stop"]
+      Picture = Picture["icon:/24/stop"]
     }
-    { txDF TextArea
-      MoveScaled(33,19,50,31)
-      ToolTip = ("Ssitemas de archivos montados")
-      ReadOnly = True
-    }
-    { Separator1 Separator
-      MoveScaled(1,51,82,1)
-    }
-    Index = 0
+  }
+  { txDF TextArea
+    MoveScaled(0,67,70,20)
+    ToolTip = ("Sistemas de archivos montados")
+    Expand = True
+    ReadOnly = True
   }
   { TimerMemory #Timer
-    #MoveScaled(76,1)
-    Delay = 250
+    #MoveScaled(29,1)
+    Enabled = True
+    Delay = 500
   }
-  { MV MessageView
-    MoveScaled(22,21,63,6)
-    Animated = True
+  { TrayIcon1 #TrayIcon
+    #MoveScaled(36,1)
+    Picture = Picture.Load("icon.png")
+    PopupMenu = "Menu1"
   }
 }

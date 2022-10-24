@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Mon, 24 Oct 2022 12:00:00 +0000
+Source: ramdrive
+Binary: ramdrive
+Architecture: source all
+Version: 3.0.6-1
+Distribution: unstable
+Urgency: low
+Maintainer: The Nerdy Apprentice <marianocattani@gmail.com>
+Changed-By: The Nerdy Apprentice <marianocattani@gmail.com>
+Description:
+ ramdrive   - Aplicación para crear y montar unidades RAM.
+Changes:
+ ramdrive (3.0.6-1) unstable; urgency=low
+ .
+   * Agregado buscador de nuevas versiones
+Checksums-Sha1:
+ 342a435c5cfe8f86b09ae23795b2fa1670a4fa33 1119 ramdrive_3.0.6-1.dsc
+ 0c30ce18ccd15d3051132c21bfd9f170bd2834a5 1524 ramdrive_3.0.6-1.diff.gz
+ 24eb8e64bc654a8593603c3da0ce03e48bf55d2d 86888 ramdrive_3.0.6-1_all.deb
+ b2d4e9f24662b4a10c3616b2b81a70ea623cb297 1045 ramdrive_3.0.6-1_amd64.buildinfo
+Checksums-Sha256:
+ f17eda1923f5efc9ca16fa6cfcfbeb78de96deb6c6d0c1f36d00cf26fc8c7826 1119 ramdrive_3.0.6-1.dsc
+ 04667548bc3e0d724fef0fb9df8a916930455584f44fb1bf8fee304cfa9a0d0e 1524 ramdrive_3.0.6-1.diff.gz
+ 67fc0ae35fcc4677f52b637fe0bcdf0181e15069960a7b5be50742f9ba98ce3d 86888 ramdrive_3.0.6-1_all.deb
+ e0398f151bbc4f0139dd544880684638f80d7b5b4eeeca068348960477f52f7f 1045 ramdrive_3.0.6-1_amd64.buildinfo
+Files:
+ 7cb1148a5fcbd70a974f0dbab28f6478 1119 contrib/utils optional ramdrive_3.0.6-1.dsc
+ e4916da634330de4d0a7a37bbbebeb9d 1524 contrib/utils optional ramdrive_3.0.6-1.diff.gz
+ a42b7061f6039ca3e137bc2f72e6386c 86888 contrib/utils optional ramdrive_3.0.6-1_all.deb
+ 920b50c6a0a699d9c37f8d37293dbc12 1045 contrib/utils optional ramdrive_3.0.6-1_amd64.buildinfo

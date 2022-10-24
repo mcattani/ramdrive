@@ -2,13 +2,27 @@
 
 ' Módulo para correr los comandos del sistema.
 
-Public Sub MemLibre() As String
+Public Sub MemSistema() As String ' Función que nos devuelve la información de la memoria del sistema
 
   Dim Comando As String, Salida As String
 
   Comando = "free -m"
 
   Shell (Comando) To Salida
+
+  Return Salida
+
+End
+
+Public Sub MemoriaLibre() As Integer 'Función que nos devuelve solo la memoria libre del sistema
+  ' grep MemAvailable / proc / meminfo | awk '{print $2 / 1024}' Comando que nos devuelve la memoria disponible
+
+  Dim Comando As String, Tempo As String, Salida As Integer
+
+  Comando = "grep MemAvailable /proc/meminfo | awk '{print $2 / 1024}'"
+  Shell (Comando) To Tempo
+
+  Salida = CFloat(Trim(Tempo))
 
   Return Salida
 

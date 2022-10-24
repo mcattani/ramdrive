@@ -1,33 +1,23 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,80,51)
-  Text = ("Mas inforación")
-  Icon = Picture["icon:/32/system"]
+  MoveScaled(0,0,91,31)
+  Text = ("Más información")
+  Icon = Picture["icon:/24/info"]
   Resizable = False
-  { Label1 Label
-    MoveScaled(1,1,43,3)
-    Font = Font["Underline"]
-    Text = ("Sistemas de Archivos Montados:")
-  }
-  { txDF TextArea
-    MoveScaled(1,5,78,19)
-    ToolTip = ("Salida del reporte del sistema de archivos")
-    ReadOnly = True
-  }
   { TextArea1 TextArea
-    MoveScaled(1,29,78,13)
+    MoveScaled(0,1,90,17)
     Text = ("La unidad creada se borrará al reiniciar el sistema.\nSi se quiere que esta se cree cada vez que se inicia el mismo hay que añadir una linea al archivo \"/etc/fstab\" \n\nEj: tmpfs       /mnt/ramdisk tmpfs  nodev,nosuid,noexec,nodiratime,size=1024M   0 0\n\n")
     ReadOnly = True
   }
-  { Label2 Label
-    MoveScaled(1,25,43,3)
-    Font = Font["Underline"]
-    Text = ("Aclaracón:")
+  { UrlInfo URLLabel
+    MoveScaled(1,18,87,5)
+    Font = Font["+3"]
+    Text = ("https://www.linuxadictos.com/crea-un-ramdisk-en-tu-distribucion-linux.html")
   }
-  { btCerrar Button
-    MoveScaled(58,44,21,5)
+  { btnCerrar Button
+    MoveScaled(1,24,15,5)
     Text = ("Cerrar")
-    Picture = Picture["icon:/32/quit"]
+    Picture = Picture["icon:/24/close"]
   }
 }
