@@ -2,7 +2,7 @@
 Title=RamDrive
 Startup=FMain
 Icon=icon.png
-Version=3.0.6
+Version=3.0.7
 Component=gb.image
 Component=gb.gui
 Component=gb.form
@@ -21,7 +21,7 @@ VendorPrefix=TheNerdyApprentice
 Address=marianocattani@gmail.com
 Url=https://thenerdyapprentice.blogspot.com/
 License=General Public License
-PackageName=ramdrive-3.0.6
+PackageName=ramdrive-3.0.7
 CreateEachDirectory=1
 RuntimeVersion="3.15"
 Packager=1

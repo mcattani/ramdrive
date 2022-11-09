@@ -1,3 +1,6 @@
+* Wed Nov 09 2022 The Nerdy Apprentice <marianocattani@gmail.com> 3.0.7
+- Corregido error al convertir variable cuando el separador decimal es una coma y no un punto
+
 * Mon Oct 24 2022 The Nerdy Apprentice <marianocattani@gmail.com> 3.0.6
 - Agregado buscador de nuevas versiones
 

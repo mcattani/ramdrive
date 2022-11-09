@@ -22,7 +22,9 @@ Public Sub MemoriaLibre() As Integer 'Función que nos devuelve solo la memoria 
   Comando = "grep MemAvailable /proc/meminfo | awk '{print $2 / 1024}'"
   Shell (Comando) To Tempo
 
-  Salida = CFloat(Trim(Tempo))
+  Tempo = Trim(tempo) 'Quitamos el espacio al final de la variable
+
+  Salida = CFloat(Replace(tempo, ",", ".")) ' Si el separador decimal es coma la conversión a float no funciona, reemplazamos la coma por un punto.
 
   Return Salida
 

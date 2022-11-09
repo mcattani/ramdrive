@@ -1,0 +1,31 @@
+Format: 1.0
+Source: ramdrive
+Binary: ramdrive
+Architecture: all source
+Version: 3.0.7-1
+Checksums-Md5:
+ 20516bd547a3f749099db9d8655c1192 1119 ramdrive_3.0.7-1.dsc
+ b64946948ec6dc90aa682786b9f7024e 418652 ramdrive_3.0.7-1_all.deb
+Checksums-Sha1:
+ 894d0788ff37c249fc60f2ab5e6a3c92d02536c1 1119 ramdrive_3.0.7-1.dsc
+ 4d83d73e48b590bae3d19cc6ceb522da0314bd30 418652 ramdrive_3.0.7-1_all.deb
+Checksums-Sha256:
+ 5bfe565f6aae78e3c2928353d19c3b449d69f6704ed36d8ed60b9f65d2b0349e 1119 ramdrive_3.0.7-1.dsc
+ aede7401fc3cb381c2d881f5c102be177ef62a3b9f1653f4d6aa97a3b0c0c012 418652 ramdrive_3.0.7-1_all.deb
+Build-Origin: ArchLinux
+Build-Architecture: amd64
+Build-Date: Wed, 09 Nov 2022 16:14:12 -0300
+Environment:
+ DEB_BUILD_OPTIONS="parallel=4"
+ LANG="es_AR.UTF-8"
+ LC_ADDRESS="es_AR.UTF-8"
+ LC_ALL="es_AR.UTF-8"
+ LC_IDENTIFICATION="es_AR.UTF-8"
+ LC_MEASUREMENT="es_AR.UTF-8"
+ LC_MONETARY="es_AR.UTF-8"
+ LC_NAME="es_AR.UTF-8"
+ LC_NUMERIC="es_AR.UTF-8"
+ LC_PAPER="es_AR.UTF-8"
+ LC_TELEPHONE="es_AR.UTF-8"
+ LC_TIME="es_AR.UTF-8"
+ SOURCE_DATE_EPOCH="1667995200"

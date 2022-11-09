@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Wed, 09 Nov 2022 12:00:00 +0000
+Source: ramdrive
+Binary: ramdrive
+Architecture: source all
+Version: 3.0.7-1
+Distribution: unstable
+Urgency: low
+Maintainer: The Nerdy Apprentice <marianocattani@gmail.com>
+Changed-By: The Nerdy Apprentice <marianocattani@gmail.com>
+Description:
+ ramdrive   - Aplicación para crear y montar unidades RAM.
+Changes:
+ ramdrive (3.0.7-1) unstable; urgency=low
+ .
+   * Corregido error al convertir variable cuando el separador decimal es una coma
+     y no un punto
+Checksums-Sha1:
+ 894d0788ff37c249fc60f2ab5e6a3c92d02536c1 1119 ramdrive_3.0.7-1.dsc
+ 99d79cf1e668270fc587e516fe601feb525bf0d2 1611 ramdrive_3.0.7-1.diff.gz
+ 4d83d73e48b590bae3d19cc6ceb522da0314bd30 418652 ramdrive_3.0.7-1_all.deb
+ 63536d81039d8adce9e966a9564f116af2567026 1048 ramdrive_3.0.7-1_amd64.buildinfo
+Checksums-Sha256:
+ 5bfe565f6aae78e3c2928353d19c3b449d69f6704ed36d8ed60b9f65d2b0349e 1119 ramdrive_3.0.7-1.dsc
+ a0d907036796e339120e831622bfd48ee4c0128dbf9a7cbf3b1b925fef8d588e 1611 ramdrive_3.0.7-1.diff.gz
+ aede7401fc3cb381c2d881f5c102be177ef62a3b9f1653f4d6aa97a3b0c0c012 418652 ramdrive_3.0.7-1_all.deb
+ 1668d79e66e0db1a8b1c81bcc4010da8b89cc41f2649e7a3a80c50934281ccde 1048 ramdrive_3.0.7-1_amd64.buildinfo
+Files:
+ 20516bd547a3f749099db9d8655c1192 1119 contrib/utils optional ramdrive_3.0.7-1.dsc
+ 55b7ae372ec444a747522cdc5b320bb1 1611 contrib/utils optional ramdrive_3.0.7-1.diff.gz
+ b64946948ec6dc90aa682786b9f7024e 418652 contrib/utils optional ramdrive_3.0.7-1_all.deb
+ d5f49554a30185adeecb10c071931fb6 1048 contrib/utils optional ramdrive_3.0.7-1_amd64.buildinfo
